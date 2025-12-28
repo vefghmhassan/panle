@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>پنل مدیریت پرامپت‌ها</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background">
+      <div class="blob blob-one"></div>
+      <div class="blob blob-two"></div>
+      <div class="grain"></div>
+    </div>
+
+    <main class="wrap">
+      <section id="login-screen" class="card">
+        <div class="card-header">
+          <span class="eyebrow">ورود امن</span>
+          <h1>ورود به پنل مدیریت</h1>
+          <p>برای ادامه، نام کاربری و گذرواژه را وارد کنید.</p>
+        </div>
+        <form id="login-form" class="stack">
+          <label class="field">
+            <span>نام کاربری</span>
+            <input type="text" id="login-username" placeholder="admin" required />
+          </label>
+          <label class="field">
+            <span>گذرواژه</span>
+            <input type="password" id="login-password" placeholder="••••••" required />
+          </label>
+          <button type="submit" class="btn primary">ورود</button>
+          <p id="login-message" class="message"></p>
+        </form>
+      </section>
+
+      <section id="panel-screen" class="panel hidden">
+        <header class="panel-header">
+          <div>
+            <span class="eyebrow">Prompt Panel</span>
+            <h2>پنل مدیریت محتوا</h2>
+          </div>
+          <div class="panel-actions">
+            <span id="session-user" class="chip"></span>
+            <button id="logout" class="btn ghost">خروج</button>
+          </div>
+        </header>
+
+        <nav class="tabs">
+          <button class="tab active" data-tab="categories">دسته‌بندی‌ها</button>
+          <button class="tab" data-tab="prompts">لیست پرامپت‌ها</button>
+          <button class="tab" data-tab="updates">آپدیت‌ها</button>
+        </nav>
+
+        <section class="tab-panels">
+          <div class="tab-panel" data-tab-panel="categories">
+            <div class="panel-grid">
+              <div class="card">
+                <h3>ایجاد/ویرایش دسته‌بندی</h3>
+                <form id="category-form" class="stack">
+                  <label class="field">
+                    <span>نام فارسی</span>
+                    <input type="text" id="category-name-fa" required />
+                  </label>
+                  <label class="field">
+                    <span>نام انگلیسی</span>
+                    <input type="text" id="category-name-en" required />
+                  </label>
+                  <div class="row">
+                    <button type="submit" class="btn primary" id="category-submit">ثبت دسته‌بندی</button>
+                    <button type="button" class="btn ghost hidden" id="category-cancel">لغو ویرایش</button>
+                  </div>
+                  <p id="category-message" class="message"></p>
+                </form>
+              </div>
+              <div class="card">
+                <h3>مدیریت دسته‌بندی‌ها</h3>
+                <div id="categories-list" class="list"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel hidden" data-tab-panel="prompts">
+            <div class="panel-grid">
+              <div class="card">
+                <h3>ایجاد/ویرایش پرامپت</h3>
+                <form id="prompt-form" class="stack">
+                  <label class="field">
+                    <span>عنوان فارسی</span>
+                    <input type="text" id="prompt-title-fa" required />
+                  </label>
+                  <label class="field">
+                    <span>عنوان انگلیسی</span>
+                    <input type="text" id="prompt-title-en" required />
+                  </label>
+                  <label class="field">
+                    <span>دسته‌بندی</span>
+                    <select id="prompt-category">
+                      <option value="">بدون دسته‌بندی</option>
+                    </select>
+                  </label>
+                  <label class="field">
+                    <span>تصویر پرامپت</span>
+                    <input type="file" id="prompt-image" accept="image/*" />
+                    <small class="hint">حداکثر ۲ مگابایت، فرمت‌های رایج</small>
+                  </label>
+                  <div class="row">
+                    <button type="submit" class="btn primary" id="prompt-submit">ثبت پرامپت</button>
+                    <button type="button" class="btn ghost hidden" id="prompt-cancel">لغو ویرایش</button>
+                  </div>
+                  <p id="prompt-message" class="message"></p>
+                </form>
+              </div>
+              <div class="card">
+                <h3>لیست پرامپت‌ها</h3>
+                <div id="prompts-list" class="cards"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel hidden" data-tab-panel="updates">
+            <div class="card updates-card">
+              <h3>به‌روزرسانی‌های اخیر</h3>
+              <ul class="updates">
+                <li>
+                  <strong>نسخه 1.0</strong>
+                  <span>ورود ساده، مدیریت دسته‌بندی و پرامپت‌ها، و آپلود تصویر سرورلس.</span>
+                </li>
+                <li>
+                  <strong>گام بعدی</strong>
+                  <span>اتصال نقش‌های کاربری و گزارش‌گیری استفاده.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
